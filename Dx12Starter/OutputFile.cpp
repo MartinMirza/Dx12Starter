@@ -1,7 +1,6 @@
 #include "OutputFile.h"
 
 OutputFile::OutputFile()
-    : fileHandle(INVALID_HANDLE_VALUE)
 {
 }
 
@@ -11,20 +10,12 @@ OutputFile::~OutputFile()
 
 void OutputFile::Open(LPCSTR fileName)
 {
-    fileHandle = CreateFileA(fileName, GENERIC_WRITE, 0, NULL,
-        CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
-
-    if (fileHandle == INVALID_HANDLE_VALUE)
-    {
-        MessageBox(NULL, L"Unable to open file!",
-            L"File Error", MB_OK | MB_ICONERROR);
-        exit(1);
-    }
+    File::Open(fileName, GENERIC_WRITE, CREATE_ALWAYS);
 }
 
 void OutputFile::Close()
 {
-    CloseHandle(fileHandle);
+    File::Close();
 }
 
 void OutputFile::Write(LPCVOID data, DWORD size)

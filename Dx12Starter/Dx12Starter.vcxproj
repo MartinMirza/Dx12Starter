@@ -133,6 +133,9 @@
     <ClCompile Include="DX12CommandList.cpp" />
     <ClCompile Include="DX12DescriptorHeap.cpp" />
     <ClCompile Include="DX12RenderTarget.cpp" />
+    <ClCompile Include="DX12Shader.cpp" />
+    <ClCompile Include="File.cpp" />
+    <ClCompile Include="InputFile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Engine.h" />
@@ -146,6 +149,11 @@
     <ClInclude Include="DX12CommandList.h" />
     <ClInclude Include="DX12DescriptorHeap.h" />
     <ClInclude Include="DX12RenderTarget.h" />
+    <ClInclude Include="DX12Shader.h" />
+    <ClInclude Include="File.h" />
+    <ClInclude Include="InputFile.h" />
+    <Hlsl Include="bypass_vs.hlsl" />
+    <Hlsl Include="bypass_ps.hlsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

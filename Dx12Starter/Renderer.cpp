@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "CommandQueue.h"
+#include "DX12CommandList.h"
 #include "HardwareCapabilities.h"
 #include "Logger.h"
 #include "RendererSettings.h"
@@ -20,12 +21,15 @@ Renderer::Renderer(HWND hwnd, const RendererSettings& settings) : commandQueue(n
     CreateSwapChain();
     CreateRtvDescriptorHeap();
     CreateRenderTargetViews();
+    LoadShaders();
     DisableDxgiMsgQueueMonitoring();
 }
 
 Renderer::~Renderer()
 {
     delete commandQueue;
+    delete vertexShader;
+    delete pixelShader;
 }
 
 void Renderer::CreateDxgiFactory()
@@ -241,6 +245,29 @@ void Renderer::DisableDxgiMsgQueueMonitoring()
     Logger::GetInstance().Log("DXGI message queue monitoring disabled\n");
 }
 
+void Renderer::LoadShaders()
+{
+    Logger::GetInstance().Log("Loading shaders...\n");
+    
+    // Load vertex shader
+    vertexShader = new DX12Shader("bypass_vs.cso");
+    if (!vertexShader)
+    {
+        Logger::GetInstance().Log("Failed to load vertex shader\n");
+        return;
+    }
+    
+    // Load pixel shader
+    pixelShader = new DX12Shader("bypass_ps.cso");
+    if (!pixelShader)
+    {
+        Logger::GetInstance().Log("Failed to load pixel shader\n");
+        return;
+    }
+    
+    Logger::GetInstance().Log("Shaders loaded successfully\n");
+}
+
 void Renderer::Render()
 {
     RecordCommandList();
@@ -257,8 +284,8 @@ void Renderer::ResetCommandList()
 
 void Renderer::RecordCommandList()
 {
-    const float clearColorOne[] = { 1.0f, 0.0f, 0.0f, 1.0f };
-    const float clearColorTwo[] = { 0.0f, 1.0f, 0.0f, 1.0f };
+    constexpr float clearColorOne[] = { 1.0f, 0.0f, 0.0f, 1.0f };
+    constexpr float clearColorTwo[] = { 0.0f, 1.0f, 0.0f, 1.0f };
     
     commandList->Reset();
     commandList->TransitionTo(renderTargets[currentFrameIndex], D3D12_RESOURCE_STATE_RENDER_TARGET);

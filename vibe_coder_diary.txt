@@ -781,12 +781,71 @@ Next Steps:
 - Add depth/stencil buffers
 - Test VSync on/off behavior
 =======
+PHASE 14: Implement Shaders - COMPLETED ✅
+----------------------------------------
+Goal: Implement shader loading infrastructure following the tutorial
+
+Completion Date: 11-04-2026
+Time Taken: ~30 minutes
+
+Changes Made:
+✅ Created DX12Shader class for shader loading
+✅ Created HLSL shader files (bypass_vs.hlsl, bypass_ps.hlsl)
+✅ Implemented shader compilation batch script using fxc.exe
+✅ Added shader loading to Renderer class
+✅ Used ComPtr for resource management (no DX12Resource wrapper as requested)
+
+Files Created:
+1. Dx12Starter/DX12Shader.h - Shader loading class header
+2. Dx12Starter/DX12Shader.cpp - Shader loading implementation
+3. Dx12Starter/File.h - Base file operations class
+4. Dx12Starter/File.cpp - Base file operations implementation
+5. Dx12Starter/InputFile.h - Input file reading class
+6. Dx12Starter/InputFile.cpp - Input file reading implementation
+7. Dx12Starter/bypass_vs.hlsl - Vertex shader source
+8. Dx12Starter/bypass_ps.hlsl - Pixel shader source
+9. compile_shaders.bat - Shader compilation script
+
+Files Modified:
+1. Dx12Starter/Renderer.h - Added shader members and LoadShaders() method
+2. Dx12Starter/Renderer.cpp - Implemented shader loading in constructor
+3. Dx12Starter/OutputFile.h - Refactored to inherit from File base class
+4. Dx12Starter/OutputFile.cpp - Updated to use base File class methods
+5. Dx12Starter/Dx12Starter.vcxproj - Added new files to project
+
+Key Implementation Details:
+- DX12Shader class reads compiled shader bytecode from .cso files using InputFile
+- Created File/InputFile class hierarchy for file operations (matching tutorial exactly)
+- InputFile allocates memory for file data, DX12Shader takes ownership
+- InputFile has empty destructor - consumer responsible for freeing buffer (ownership transfer pattern)
+- Shader compilation using fxc.exe with vs_5_0/ps_5_0 profiles
+- Integrated shader loading into Renderer initialization
+- Refactored OutputFile to use base File class for consistency
+
+Results:
+- Compilation Status: ✅ Success
+- Runtime Status: ✅ Success (shaders load successfully)
+- Build Time: ~3.67 seconds
+- Executable: x64\Debug\Dx12Starter.exe
+- Log File: dx12starter_log.txt
+
+Log Output Example:
+```
+00:46:49 - Loading shaders...
+00:46:49 - Loading shader: bypass_vs.cso
+00:46:49 - Shader loaded successfully: bypass_vs.cso
+00:46:49 - Loading shader: bypass_ps.cso
+00:46:49 - Shader loaded successfully: bypass_ps.cso
+00:46:49 - Shaders loaded successfully
+```
+
 Next Steps:
 - Fix command allocator reset errors (0x80004005) through proper synchronization
 - Implement frame presentation loop in Engine::Tick()
 - Add actual rendering commands
 - Implement render target management
 - Test VSync on/off behavior
+- Implement pipeline state objects to use the loaded shaders
 =======
 
 Swap Chain Configuration:

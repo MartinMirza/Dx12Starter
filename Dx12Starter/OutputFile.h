@@ -1,15 +1,14 @@
 #pragma once
 
 #include <Windows.h>
+#include "File.h"
 
-class OutputFile
+class OutputFile : public File
 {
 public:
     OutputFile();
     ~OutputFile();
-    void Open(LPCSTR fileName);
+    virtual void Open(LPCSTR fileName) override;
     void Close();
     void Write(LPCVOID data, DWORD size);
-private:
-    HANDLE fileHandle;
 };
