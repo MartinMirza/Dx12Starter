@@ -1,0 +1,65 @@
+Vibe Coder Diary Instructions
+=============================
+
+IMPORTANT: These instructions relate to vibe_coder_diary.txt
+If vibe_coder_diary.txt does not exist, create it with the following structure:
+
+GENERAL RULES:
+--------------
+1. Update the diary at the end of each task.
+2. Each action should end with compiling the project and attempting to run it.
+3. Fix any compilation errors encountered.
+4. Document all changes, builds, and actions in the diary.
+
+DIARY STRUCTURE (for vibe_coder_diary.txt):
+-------------------------------------------
+1. ALWAYS maintain these sections intact:
+   - Build Instructions
+   - Run Instructions
+   - Project Structure
+   - Diary Operation Instructions
+
+2. Update approach:
+   - Add new phases at the end
+   - Mark completed phases with ✅
+   - Never delete or duplicate phases
+   - Keep chronological order
+
+3. Phase structure:
+   [PHASE X: Title - STATUS]
+   -------------------------
+   Goal: Clear objective
+   
+   Changes Made:
+   - Bullet point changes
+   
+   Files Created:
+   - File paths and purpose
+   
+   Files Modified:
+   - File paths and purpose
+   
+   Issues/Challenges:
+   - Problems encountered
+   - Solutions applied
+   
+   Results:
+   - Compilation status
+   - Runtime behavior
+   - Metrics
+
+4. Status markers:
+   ✅ = Completed successfully
+   ⚠️ = In progress/partial
+   ❌ = Failed/abandoned
+   🔄 = Refactored/revised
+
+5. Always include:
+   - What was changed
+   - Why it was changed
+   - How it was tested
+   - Final status
+   - For external references (Stack Overflow, documentation, etc.):
+     - Add exact URLs to specific questions/answers
+     - Include relevant quote or summary
+     - Cite the source clearly in the diary entry

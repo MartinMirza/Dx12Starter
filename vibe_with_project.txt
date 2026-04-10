@@ -1,0 +1,56 @@
+Vibe with project - navigation manual
+=============================
+
+After reading this file, read vibe_coder_diary_instructions.txt!
+
+COMMAND LINE BUILD:
+-------------------
+1. Set up the environment:
+   ```cmd
+   "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvarsall.bat" x64
+   ```
+
+2. Navigate to the project directory:
+   ```cmd
+   cd <project_path>
+   ```
+
+3. Build the project:
+   ```cmd
+   msbuild <project.sln> /t:Build /p:Configuration=Debug;Platform=x64
+   ```
+
+VISUAL STUDIO IDE BUILD:
+------------------------
+1. Open <project.sln>
+2. Select Debug x64 configuration
+3. Build Solution (F7)
+
+RUN INSTRUCTIONS:
+-----------------
+1. Executable: x64\Debug\<project>.exe
+2. Run from command prompt or double-click
+
+TROUBLESHOOTING:
+----------------
+- MSBuild not found: Run vcvarsall.bat first
+- Missing dependencies: Check project paths
+- DirectX issues: Ensure DirectX SDK is installed
+
+NOTES:
+------
+- Replace <project_path> with the actual project path
+- Replace <project.sln> with the actual solution file
+- Replace <project> with the actual project name
+
+PROJECT FILES:
+----------------------------------------
+1. Add all new `.h` and `.cpp` files to the project:
+   - Add `.h` files to `<ClInclude>` in the `.vcxproj` file
+   - Add `.cpp` files to `<ClCompile>` in the `.vcxproj` file
+
+2. Example:
+   ```xml
+   <ClInclude Include="Engine.h" />
+   <ClCompile Include="Engine.cpp" />
+   ```
