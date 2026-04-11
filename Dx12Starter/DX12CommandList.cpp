@@ -1,5 +1,6 @@
 #include "DX12CommandList.h"
 #include "DX12RenderTarget.h"
+#include "DX12PipelineState.h"
 #include "Logger.h"
 
 DX12CommandList::DX12CommandList(ID3D12Device* device)
@@ -78,4 +79,10 @@ void DX12CommandList::Reset()
     {
         Logger::GetInstance().Log("Failed to reset command list: 0x%X\n", hr);
     }
+}
+
+void DX12CommandList::SetPipelineState(DX12PipelineState* pipelineState)
+{
+    commandList->SetGraphicsRootSignature(pipelineState->rootSignature);
+    commandList->SetPipelineState(pipelineState->pipelineState);
 }

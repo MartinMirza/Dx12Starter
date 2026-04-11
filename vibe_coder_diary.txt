@@ -839,13 +839,104 @@ Log Output Example:
 00:46:49 - Shaders loaded successfully
 ```
 
+PHASE 15: Implement GPU Pipeline - COMPLETED ✅
+--------------------------------------------
+Goal: Implement GPU pipeline state and root signature following the tutorial
+
+Reference: <https://bboczula.pl/gpu-pipeline/>
+
+Completion Date: 11-04-2026
+Time Taken: ~2 hours
+
+Changes Made:
+✅ Created DX12PipelineState class for pipeline state management
+✅ Implemented root signature creation with empty signature
+✅ Implemented pipeline state creation with input layout, shaders, and default states
+✅ Added SetPipelineState method to DX12CommandList
+✅ Integrated pipeline state into Renderer class
+✅ Updated command list recording to set pipeline state before rendering
+✅ Fixed memory management issues in InputFile and Renderer
+✅ Refactored DX12PipelineState.cpp to use d3dx12 helper library for cleaner code
+✅ Fixed application hanging issue by removing logger calls from file-related classes
+✅ Updated compile_shaders.bat to copy shaders to correct location
+
+Files Created:
+1. Dx12Starter/DX12PipelineState.h - Pipeline state class header
+2. Dx12Starter/DX12PipelineState.cpp - Pipeline state implementation
+3. Dx12Starter/d3dx12.h - Complete DirectX 12 helper library (4914 lines)
+
+Files Modified:
+1. Dx12Starter/DX12CommandList.h - Added SetPipelineState declaration
+2. Dx12Starter/DX12CommandList.cpp - Implemented SetPipelineState method
+3. Dx12Starter/Renderer.h - Added pipeline state member and CreatePipelineState method
+4. Dx12Starter/Renderer.cpp - Implemented pipeline state creation and integration
+5. Dx12Starter/InputFile.cpp - Fixed missing Logger include and removed debug logs
+6. Dx12Starter/DX12PipelineState.cpp - Refactored to use d3dx12 helper classes
+7. Dx12Starter/DX12Shader.cpp - Added debug logging for shader loading
+8. Dx12Starter/File.cpp - Removed logger calls to prevent circular dependency
+9. Dx12Starter/OutputFile.cpp - Removed logger calls to prevent circular dependency
+10. Dx12Starter/compile_shaders.bat - Updated to copy shaders to x64\Debug directory
+11. Dx12Starter/Dx12Starter.vcxproj - Added new files to project
+
+Key Implementation Details:
+- Pipeline state encapsulates root signature and graphics pipeline state
+- Root signature created with ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT flag
+- Input layout matches shader POSITION semantic (R32G32B32_FLOAT format)
+- Default rasterizer, blend, and depth-stencil states used via d3dx12 helper classes
+- Pipeline state set in command list before rendering operations
+- Proper memory management with RAII principles
+- Integration with existing shader loading system
+- Refactored to use CD3DX12_RASTERIZER_DESC, CD3DX12_BLEND_DESC, and CD3DX12_DEPTH_STENCIL_DESC
+- Fixed circular dependency issue by removing logger calls from file-related classes
+- Shader files now properly copied to x64\Debug directory for runtime access
+
+Pipeline State Components:
+- Input Layout: POSITION (float3) for vertex shader input
+- Vertex Shader: bypass_vs.cso (compiled from bypass_vs.hlsl)
+- Pixel Shader: bypass_ps.cso (compiled from bypass_ps.hlsl)
+- Root Signature: Empty signature allowing input assembler input layout
+- Rasterizer: CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT) - Solid fill, back-face culling, depth clipping enabled
+- Blend State: CD3DX12_BLEND_DESC(D3D12_DEFAULT) - Default blend operations (one/zero)
+- Depth-Stencil: CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT) - Depth testing enabled, less comparison function
+- Primitive Topology: Triangle list
+- Render Target: 1 target with R8G8B8A8_UNORM format
+
+Results:
+- Compilation Status: ✅ Success
+- Runtime Status: ✅ Success (pipeline state created and used successfully)
+- Build Time: ~1.62 seconds
+- Executable: x64\Debug\Dx12Starter.exe
+- Log File: dx12starter_log.txt
+
+Log Output Example:
+```
+14:02:15 - Loading shaders...
+14:02:15 - Loading shader: bypass_vs.cso
+14:02:15 - Shader size: 492 bytes
+14:02:15 - Shader buffer: 000001DA6BA3D620
+14:02:15 - Shader loaded successfully: bypass_vs.cso (Size: 492 bytes)
+14:02:15 - Loading shader: bypass_ps.cso
+14:02:15 - Shader size: 452 bytes
+14:02:15 - Shader buffer: 000001DA6BB09AE0
+14:02:15 - Shader loaded successfully: bypass_ps.cso (Size: 452 bytes)
+14:02:15 - Shaders loaded successfully
+14:02:15 - Creating pipeline state...
+14:02:15 - Creating DX12PipelineState...
+14:02:15 - Creating root signature...
+14:02:15 - Root signature created successfully
+14:02:15 - Creating pipeline state...
+14:02:15 - Pipeline state created successfully
+14:02:15 - DX12PipelineState created successfully
+14:02:15 - Pipeline state created successfully
+```
+
 Next Steps:
 - Fix command allocator reset errors (0x80004005) through proper synchronization
 - Implement frame presentation loop in Engine::Tick()
-- Add actual rendering commands
+- Add actual geometry rendering (vertex buffers, etc.)
 - Implement render target management
 - Test VSync on/off behavior
-- Implement pipeline state objects to use the loaded shaders
+- Add viewport and scissor rectangle setup
 =======
 
 Swap Chain Configuration:

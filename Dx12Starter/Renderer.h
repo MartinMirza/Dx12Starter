@@ -9,6 +9,7 @@ using Microsoft::WRL::ComPtr;
 #include "DX12DescriptorHeap.h"
 #include "DX12RenderTarget.h"
 #include "DX12Shader.h"
+#include "DX12PipelineState.h"
 #include "HardwareCapabilities.h"
 #include "RendererSettings.h"
 
@@ -45,6 +46,7 @@ private:
     void GetCapabilities();
     bool IsVsyncDisabledAndTearingAllowed();
     void LoadShaders();
+    void CreatePipelineState();
 
     ComPtr<IDXGIFactory5> dxgiFactory;
     ComPtr<IDXGIAdapter1> dxgiAdapter;
@@ -57,6 +59,7 @@ private:
     ComPtr<ID3D12Resource> resources[FRAME_COUNT];
     DX12Shader* vertexShader = nullptr;
     DX12Shader* pixelShader = nullptr;
+    DX12PipelineState* pipelineState = nullptr;
     HWND hwnd;
     HardwareCapabilities hardwareCapabilities;
     RendererSettings settings;

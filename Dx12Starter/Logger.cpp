@@ -1,7 +1,7 @@
 #include "Logger.h"
+#include <cstdio>
+#include <ctime>
 #include <stdarg.h>
-#include <stdio.h>
-#include <time.h>
 
 Logger& Logger::GetInstance()
 {
@@ -12,7 +12,6 @@ Logger& Logger::GetInstance()
 Logger::Logger()
 {
     logFile.Open("dx12starter_log.txt");
-    Log("%s", "----- LOG STARTED -----\n");
 }
 
 Logger::~Logger()

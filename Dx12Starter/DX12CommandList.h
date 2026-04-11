@@ -6,6 +6,7 @@
 using Microsoft::WRL::ComPtr;
 
 class DX12RenderTarget;
+class DX12PipelineState;
 
 class DX12CommandList
 {
@@ -19,6 +20,7 @@ public:
     void ClearRenderTarget(DX12RenderTarget* renderTarget, const float* color);
     void Close();
     void Reset();
+    void SetPipelineState(DX12PipelineState* pipelineState);
     
     // Friend access for CommandQueue
     ID3D12GraphicsCommandList* GetCommandList() const { return commandList.Get(); }

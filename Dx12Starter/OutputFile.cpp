@@ -1,4 +1,5 @@
 #include "OutputFile.h"
+#include "Logger.h"
 
 OutputFile::OutputFile()
 {
@@ -15,14 +16,12 @@ void OutputFile::Write(LPCVOID data, DWORD size)
     BOOL errorFlag = WriteFile(fileHandle, data, size, &bytesWritten, NULL);
     if (FALSE == errorFlag)
     {
-        MessageBox(NULL, L"Unable to write to file!",
-            L"File Error", MB_OK | MB_ICONERROR);
+        Logger::GetInstance().Log("ERROR: Unable to write to file! (Error: %d)\n", GetLastError());
         exit(1);
     }
     else if (bytesWritten != size)
     {
-        MessageBox(NULL, L"Unable to write entire string!",
-            L"File Error", MB_OK | MB_ICONERROR);
+        Logger::GetInstance().Log("ERROR: Unable to write entire string! (Written: %d, Expected: %d)\n", bytesWritten, size);
         exit(1);
     }
 }

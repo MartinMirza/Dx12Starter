@@ -15,7 +15,6 @@ void InputFile::Read()
     fileBuffer = new char[fileSize];
     if (!ReadFile(fileHandle, fileBuffer, fileSize, NULL, NULL))
     {
-        Logger::GetInstance().Log("%s (%d)", "ERROR: Reading from file failed", GetLastError());
         exit(3);
     }
 }
@@ -28,4 +27,9 @@ void* InputFile::GetBuffer()
 DWORD InputFile::GetSize()
 {
     return fileSize;
+}
+
+void InputFile::Close()
+{
+    File::Close();
 }

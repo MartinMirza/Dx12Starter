@@ -12,6 +12,7 @@ public:
     void Read();
     void* GetBuffer();
     DWORD GetSize();
+    void Close();
 
 private:
     DWORD fileSize;

@@ -22,6 +22,7 @@ Renderer::Renderer(HWND hwnd, const RendererSettings& settings) : commandQueue(n
     CreateRTVDescriptorHeap();
     CreateRenderTargetViews();
     LoadShaders();
+    CreatePipelineState();
     DisableDxgiMsgQueueMonitoring();
 }
 
@@ -30,8 +31,15 @@ Renderer::~Renderer()
     delete commandQueue;
     delete vertexShader;
     delete pixelShader;
+    delete pipelineState;
     delete rtvDescriptorHeap;
-    delete[] renderTargets;
+    
+    // Delete each render target individually
+    for (UINT i = 0; i < FRAME_COUNT; i++)
+    {
+        delete renderTargets[i];
+    }
+    
     delete commandList;
 }
 
@@ -248,6 +256,26 @@ void Renderer::DisableDxgiMsgQueueMonitoring()
     Logger::GetInstance().Log("DXGI message queue monitoring disabled\n");
 }
 
+void Renderer::CreatePipelineState()
+{
+    Logger::GetInstance().Log("Creating pipeline state...\n");
+    
+    if (!vertexShader || !pixelShader)
+    {
+        Logger::GetInstance().Log("Error: Shaders not loaded\n");
+        return;
+    }
+    
+    pipelineState = new DX12PipelineState(device.Get(), vertexShader, pixelShader);
+    if (!pipelineState)
+    {
+        Logger::GetInstance().Log("Failed to create pipeline state\n");
+        return;
+    }
+    
+    Logger::GetInstance().Log("Pipeline state created successfully\n");
+}
+
 void Renderer::LoadShaders()
 {
     Logger::GetInstance().Log("Loading shaders...\n");
@@ -291,6 +319,13 @@ void Renderer::RecordCommandList()
     constexpr float clearColorTwo[] = { 0.0f, 1.0f, 0.0f, 1.0f };
     
     commandList->Reset();
+    
+    // Set the pipeline state
+    if (pipelineState)
+    {
+        commandList->SetPipelineState(pipelineState);
+    }
+    
     commandList->TransitionTo(renderTargets[currentFrameIndex], D3D12_RESOURCE_STATE_RENDER_TARGET);
     commandList->SetRenderTarget(renderTargets[currentFrameIndex]);
     commandList->ClearRenderTarget(renderTargets[currentFrameIndex], currentFrameIndex ? clearColorOne : clearColorTwo);

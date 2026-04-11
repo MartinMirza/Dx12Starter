@@ -12,7 +12,8 @@ for %%f in (Dx12Starter\*_vs.hlsl) do (
         echo Vertex shader compilation failed: %%f
         exit /b %ERRORLEVEL%
     )
-    copy "%%~nf.cso" Dx12Starter\"%%~nf.cso"
+    copy "%%~nf.cso" Dx12Starter"%%~nf.cso"
+    copy "%%~nf.cso" x64\Debug"%%~nf.cso"
 )
 
 REM Compile all pixel shaders (*_ps.hlsl)
@@ -23,7 +24,8 @@ for %%f in (Dx12Starter\*_ps.hlsl) do (
         echo Pixel shader compilation failed: %%f
         exit /b %ERRORLEVEL%
     )
-    copy "%%~nf.cso" Dx12Starter\"%%~nf.cso"
+    copy "%%~nf.cso" Dx12Starter"%%~nf.cso"
+    copy "%%~nf.cso" x64\Debug"%%~nf.cso"
 )
 
 echo Shader compilation completed successfully

@@ -10,13 +10,17 @@ DX12Shader::DX12Shader(LPCSTR fileName) : bytecode({ nullptr, 0 })
     InputFile compiledShader;
     compiledShader.Open(fileName);
     compiledShader.Read();
-    compiledShader.Close();
     
     // Take ownership of the buffer from InputFile
     bytecode.BytecodeLength = compiledShader.GetSize();
-    bytecode.pShaderBytecode = compiledShader.GetBuffer();
+    Logger::GetInstance().Log("Shader size: %d bytes\n", bytecode.BytecodeLength);
     
-    Logger::GetInstance().Log("Shader loaded successfully: %s\n", fileName);
+    bytecode.pShaderBytecode = compiledShader.GetBuffer();
+    Logger::GetInstance().Log("Shader buffer: %p\n", bytecode.pShaderBytecode);
+    
+    compiledShader.Close();
+    
+    Logger::GetInstance().Log("Shader loaded successfully: %s (Size: %d bytes)\n", fileName, bytecode.BytecodeLength);
 }
 
 DX12Shader::~DX12Shader()

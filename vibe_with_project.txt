@@ -1,4 +1,26 @@
+
+After reading this file, read vibe_coder_diary_instructions.txt!
+=======
 Vibe with project - navigation manual
+=============================
+
+After reading this file, read vibe_coder_diary_instructions.txt!
+
+IMPORTANT RULES:
+----------------
+1. Any prompt that starts with "ask:" means you CANNOT, under ANY CIRCUMSTANCE:
+   - Edit any files
+   - Create new files
+   - Delete files
+   - Run any commands that modify the project
+   - Proceed with any implementation work
+   
+   You MUST only answer the question directly and concisely.
+
+2. ALWAYS include the reference article link in diary entries:
+   - Format: "Reference: <https://example.com/article/>"
+   - Place it after the goal/title section
+   - Use the exact URL from the tutorial being implemented
 =============================
 
 After reading this file, read vibe_coder_diary_instructions.txt!
