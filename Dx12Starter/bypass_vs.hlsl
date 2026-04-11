@@ -1,7 +1,22 @@
 // Vertex Shader - Bypass
-// Simply passes through the position data
+// Passes through position and color data
 
-float4 main(float4 pos : POSITION) : SV_POSITION
+struct VSInput
 {
-    return pos;
+    float3 position : POSITION;
+    float3 color : COLOR;
+};
+
+struct PSInput
+{
+    float4 position : SV_POSITION;
+    float3 color : COLOR;
+};
+
+PSInput main(VSInput input)
+{
+    PSInput output;
+    output.position = float4(input.position, 1.0f);
+    output.color = input.color;
+    return output;
 }

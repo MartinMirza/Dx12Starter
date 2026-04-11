@@ -9,7 +9,23 @@ DX12Shader::DX12Shader(LPCSTR fileName) : bytecode({ nullptr, 0 })
     // Use InputFile class to read the compiled shader file
     InputFile compiledShader;
     compiledShader.Open(fileName);
+    
+    // Check if file was opened successfully
+    if (compiledShader.GetHandle() == nullptr)
+    {
+        Logger::GetInstance().Log("Failed to open shader file: %s\n", fileName);
+        return;
+    }
+    
     compiledShader.Read();
+    
+    // Check if read was successful
+    if (compiledShader.GetSize() == 0 || compiledShader.GetBuffer() == nullptr)
+    {
+        Logger::GetInstance().Log("Failed to read shader file: %s\n", fileName);
+        compiledShader.Close();
+        return;
+    }
     
     // Take ownership of the buffer from InputFile
     bytecode.BytecodeLength = compiledShader.GetSize();

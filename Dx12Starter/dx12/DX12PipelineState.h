@@ -15,7 +15,7 @@ public:
     ~DX12PipelineState();
 
 private:
-    void CreateRootSignature(ID3D12Device* device);
+    void CreateShaderSignature(ID3D12Device* device);
     void CreatePipelineState(ID3D12Device* device, D3D12_SHADER_BYTECODE vs, D3D12_SHADER_BYTECODE ps);
     
     ID3D12RootSignature* rootSignature;

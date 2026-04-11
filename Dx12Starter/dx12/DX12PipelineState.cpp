@@ -5,7 +5,7 @@
 DX12PipelineState::DX12PipelineState(ID3D12Device* device, DX12Shader* vertexShader, DX12Shader* pixelShader)
 {
     Logger::GetInstance().Log("Creating DX12PipelineState...\n");
-    CreateRootSignature(device);
+    CreateShaderSignature(device);
     CreatePipelineState(device, vertexShader->GetBytecode(), pixelShader->GetBytecode());
     Logger::GetInstance().Log("DX12PipelineState created successfully\n");
 }
@@ -25,7 +25,7 @@ DX12PipelineState::~DX12PipelineState()
     Logger::GetInstance().Log("DX12PipelineState destroyed\n");
 }
 
-void DX12PipelineState::CreateRootSignature(ID3D12Device* device)
+void DX12PipelineState::CreateShaderSignature(ID3D12Device* device)
 {
     Logger::GetInstance().Log("Creating root signature...\n");
     
@@ -68,10 +68,11 @@ void DX12PipelineState::CreatePipelineState(ID3D12Device* device, D3D12_SHADER_B
 {
     Logger::GetInstance().Log("Creating pipeline state...\n");
     
-    // Define input layout for POSITION
+    // Define input layout for POSITION and COLOR
     D3D12_INPUT_ELEMENT_DESC inputElementDescs[] =
     {
-        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
+        { "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
+        { "COLOR", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 12, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 }
     };
     
     // Set up pipeline state description

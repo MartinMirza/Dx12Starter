@@ -102,7 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Dx12Starter;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -124,48 +124,54 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Dx12Starter.cpp" />
-    <ClCompile Include="Engine.cpp" />
-    <ClCompile Include="Logger.cpp" />
-    <ClCompile Include="OutputFile.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="WindowApplication.cpp" />
-    <ClCompile Include="CommandQueue.cpp" />
-    <ClCompile Include="dx12\DX12CommandList.cpp" />
-    <ClCompile Include="dx12\DX12DescriptorHeap.cpp" />
-    <ClCompile Include="dx12\DX12RenderTarget.cpp" />
-    <ClCompile Include="dx12\DX12Resource.cpp" />
-    <ClCompile Include="dx12\DX12Shader.cpp" />
-    <ClCompile Include="dx12\DX12PipelineState.cpp" />
-    <ClCompile Include="File.cpp" />
-    <ClCompile Include="InputFile.cpp" />
+    <ClCompile Include="..\Dx12Starter\Dx12Starter.cpp" />
+    <ClCompile Include="..\Dx12Starter\Engine.cpp" />
+    <ClCompile Include="..\Dx12Starter\Logger.cpp" />
+    <ClCompile Include="..\Dx12Starter\OutputFile.cpp" />
+    <ClCompile Include="..\Dx12Starter\Renderer.cpp" />
+    <ClCompile Include="..\Dx12Starter\WindowApplication.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12CommandQueue.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12CommandList.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12DescriptorHeap.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12Device.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12Geometry.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12Viewport.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12RenderTarget.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12Resource.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12Shader.cpp" />
+    <ClCompile Include="..\Dx12Starter\dx12\DX12PipelineState.cpp" />
+    <ClCompile Include="..\Dx12Starter\File.cpp" />
+    <ClCompile Include="..\Dx12Starter\InputFile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Engine.h" />
-    <ClInclude Include="Logger.h" />
-    <ClInclude Include="OutputFile.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="WindowApplication.h" />
-    <ClInclude Include="CommandQueue.h" />
-    <ClInclude Include="HardwareCapabilities.h" />
-    <ClInclude Include="RendererSettings.h" />
-    <ClInclude Include="dx12\DX12CommandList.h" />
-    <ClInclude Include="dx12\DX12DescriptorHeap.h" />
-    <ClInclude Include="dx12\DX12RenderTarget.h" />
-    <ClInclude Include="dx12\DX12Resource.h" />
-    <ClInclude Include="dx12\DX12Shader.h" />
-    <ClInclude Include="dx12\DX12PipelineState.h" />
-    <ClInclude Include="File.h" />
-    <ClInclude Include="InputFile.h" />
-    <Hlsl Include="bypass_vs.hlsl" />
-    <Hlsl Include="bypass_ps.hlsl" />
+    <ClInclude Include="..\Dx12Starter\Engine.h" />
+    <ClInclude Include="..\Dx12Starter\Logger.h" />
+    <ClInclude Include="..\Dx12Starter\OutputFile.h" />
+    <ClInclude Include="..\Dx12Starter\Renderer.h" />
+    <ClInclude Include="..\Dx12Starter\WindowApplication.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12CommandQueue.h" />
+    <ClInclude Include="..\Dx12Starter\HardwareCapabilities.h" />
+    <ClInclude Include="..\Dx12Starter\RendererSettings.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12CommandList.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12DescriptorHeap.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12Device.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12Geometry.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12Viewport.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12RenderTarget.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12Resource.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12Shader.h" />
+    <ClInclude Include="..\Dx12Starter\dx12\DX12PipelineState.h" />
+    <ClInclude Include="..\Dx12Starter\File.h" />
+    <ClInclude Include="..\Dx12Starter\InputFile.h" />
+    <Hlsl Include="..\bypass_vs.hlsl" />
+    <Hlsl Include="..\bypass_ps.hlsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
   <PropertyGroup>
     <PostBuildEvent>
-      copy "$(TargetDir)*.cso" "$(ProjectDir)Dx12Starter\"
+      copy "..\*.cso" "$(TargetDir)"
     </PostBuildEvent>
   </PropertyGroup>
 </Project>

@@ -1,6 +1,6 @@
 #include "Renderer.h"
-#include "CommandQueue.h"
-#include "dx12\DX12CommandList.h"
+#include "dx12/DX12CommandQueue.h"
+#include "dx12/DX12CommandList.h"
 #include "HardwareCapabilities.h"
 #include "Logger.h"
 #include "RendererSettings.h"
@@ -15,7 +15,8 @@ Renderer::Renderer(HWND hwnd, const RendererSettings& settings) : commandQueue(n
     CreateDxgiFactory();
     EnumerateAdapters();
     CreateDevice();
-    GetCapabilities(); // Check hardware capabilities before creating swap chain
+    GetCapabilities(); 
+    CreateDX12Device();
     CreateCommandQueue();
     CreateCommandList();
     CreateSwapChain();
@@ -23,6 +24,8 @@ Renderer::Renderer(HWND hwnd, const RendererSettings& settings) : commandQueue(n
     CreateRenderTargetViews();
     LoadShaders();
     CreatePipelineState();
+    CreateViewport();
+    CreateGeometry();
     TestMemoryAllocation();
     DisableDxgiMsgQueueMonitoring();
 }
@@ -30,10 +33,13 @@ Renderer::Renderer(HWND hwnd, const RendererSettings& settings) : commandQueue(n
 Renderer::~Renderer()
 {
     delete commandQueue;
+    delete dx12Device;
     delete vertexShader;
     delete pixelShader;
     delete pipelineState;
     delete rtvDescriptorHeap;
+    delete viewport;
+    delete geometry;
     
     // Delete each render target individually
     for (UINT i = 0; i < FRAME_COUNT; i++)
@@ -128,6 +134,13 @@ void Renderer::CreateDevice()
     Logger::GetInstance().Log("DirectX device created successfully\n");
 }
 
+void Renderer::CreateDX12Device()
+{
+    Logger::GetInstance().Log("Creating DX12Device wrapper...\n");
+    dx12Device = new DX12Device(device.Get());
+    Logger::GetInstance().Log("DX12Device wrapper created successfully\n");
+}
+
 void Renderer::EnableDebugLayer()
 {
     Logger::GetInstance().Log("Enabling DirectX debug layer...\n");
@@ -156,7 +169,7 @@ void Renderer::CreateCommandQueue()
 {
     Logger::GetInstance().Log("Creating CommandQueue object...\n");
     
-    commandQueue = new CommandQueue();
+    commandQueue = new DX12CommandQueue();
     commandQueue->Initialize(device.Get());
 }
 
@@ -228,13 +241,6 @@ void Renderer::CreateRenderTargetViews()
 {
     Logger::GetInstance().Log("Creating render target views...\n");
     
-    D3D12_HEAP_PROPERTIES heapProperties = {};
-    heapProperties.Type = D3D12_HEAP_TYPE_DEFAULT;
-    heapProperties.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
-    heapProperties.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
-    heapProperties.CreationNodeMask = 1;
-    heapProperties.VisibleNodeMask = 1;
-    
     for (UINT i = 0; i < FRAME_COUNT; i++)
     {
         ComPtr<ID3D12Resource> backBuffer;
@@ -296,16 +302,22 @@ void Renderer::LoadShaders()
 {
     Logger::GetInstance().Log("Loading shaders...\n");
     
-    // Load vertex shader
-    vertexShader = new DX12Shader("bypass_vs.cso");
+    CHAR currentDir[MAX_PATH];
+    GetCurrentDirectoryA(MAX_PATH, currentDir);
+    Logger::GetInstance().Log("Current working directory: %s\n", currentDir);
+    
+    const CHAR* vsPath = "E:/Repo/Dx12Starter/bypass_vs.cso";
+    Logger::GetInstance().Log("Vertex shader path: %s\n", vsPath);
+    vertexShader = new DX12Shader(vsPath);
     if (!vertexShader)
     {
         Logger::GetInstance().Log("Failed to load vertex shader\n");
         return;
     }
     
-    // Load pixel shader
-    pixelShader = new DX12Shader("bypass_ps.cso");
+    const CHAR* psPath = "E:/Repo/Dx12Starter/bypass_ps.cso";
+    Logger::GetInstance().Log("Pixel shader path: %s\n", psPath);
+    pixelShader = new DX12Shader(psPath);
     if (!pixelShader)
     {
         Logger::GetInstance().Log("Failed to load pixel shader\n");
@@ -343,8 +355,29 @@ void Renderer::RecordCommandList()
     }
     
     commandList->TransitionTo(renderTargets[currentFrameIndex]->GetDX12Resource(), D3D12_RESOURCE_STATE_RENDER_TARGET);
+    
+    // Set up viewport and scissor rectangle
+    if (viewport)
+    {
+        commandList->SetViewport(viewport);
+    }
+    
     commandList->SetRenderTarget(renderTargets[currentFrameIndex]);
     commandList->ClearRenderTarget(renderTargets[currentFrameIndex], currentFrameIndex ? clearColorOne : clearColorTwo);
+    
+    // Draw geometry if available
+    if (geometry)
+    {
+        Logger::GetInstance().Log("Setting geometry and drawing...\n");
+        commandList->SetGeometry(geometry);
+        commandList->DrawGeometry();
+        Logger::GetInstance().Log("Geometry drawn\n");
+    }
+    else
+    {
+        Logger::GetInstance().Log("WARNING: Geometry is null, cannot draw\n");
+    }
+    
     commandList->TransitionTo(renderTargets[currentFrameIndex]->GetDX12Resource(), D3D12_RESOURCE_STATE_PRESENT);
 }
 
@@ -417,6 +450,67 @@ void Renderer::PresentFrame()
 
     // Update current frame index
     currentFrameIndex = dxgiSwapChain->GetCurrentBackBufferIndex();
+}
+
+void Renderer::CreateViewport()
+{
+    // Get client area dimensions from the window
+    RECT clientRect;
+    if (GetClientRect(hwnd, &clientRect))
+    {
+        UINT width = clientRect.right - clientRect.left;
+        UINT height = clientRect.bottom - clientRect.top;
+        
+        if (width > 0 && height > 0)
+        {
+            viewport = new DX12Viewport(width, height);
+            Logger::GetInstance().Log("Viewport created successfully\n");
+        }
+        else
+        {
+            Logger::GetInstance().Log("WARNING: Invalid window dimensions (Width: %d, Height: %d)\n", width, height);
+        }
+    }
+    else
+    {
+        Logger::GetInstance().Log("WARNING: Failed to get client rectangle\n");
+        // Fallback to default dimensions
+        viewport = new DX12Viewport(800, 600);
+    }
+}
+
+void Renderer::CreateGeometry()
+{
+    Logger::GetInstance().Log("Creating geometry...\n");
+    
+    struct Vertex
+    {
+        float position[3];
+        float color[3];
+    };
+    
+    Vertex triangleVertices[3] = 
+    {
+        {{ 0.0f,  0.5f, 0.0f}, {1.0f, 0.0f, 0.0f}}, // Top - Red
+        {{ 0.5f, -0.5f, 0.0f}, {0.0f, 1.0f, 0.0f}}, // Bottom-right - Green
+        {{-0.5f, -0.5f, 0.0f}, {0.0f, 0.0f, 1.0f}}  // Bottom-left - Blue
+    };
+    
+    geometry = new DX12Geometry(
+        dx12Device,
+        triangleVertices,
+        sizeof(Vertex),
+        3
+    );
+    
+    if (geometry)
+    {
+        Logger::GetInstance().Log("Geometry created successfully\n");
+    }
+    else
+    {
+        Logger::GetInstance().Log("ERROR: Failed to create geometry\n");
+    }
 }
 
 void Renderer::TestMemoryAllocation()

@@ -1,22 +1,24 @@
-#include "CommandQueue.h"
+#include "DX12CommandQueue.h"
 #include "Logger.h"
-#include "dx12\DX12CommandList.h"
+#include "DX12CommandList.h"
 
-CommandQueue::CommandQueue() : fenceEvent(nullptr), fenceValue(0)
+DX12CommandQueue::DX12CommandQueue() : fenceEvent(nullptr), fenceValue(0)
 {
+    Logger::GetInstance().Log("DX12CommandQueue created\n");
 }
 
-CommandQueue::~CommandQueue()
+DX12CommandQueue::~DX12CommandQueue()
 {
     if (fenceEvent != nullptr && fenceEvent != INVALID_HANDLE_VALUE)
     {
         CloseHandle(fenceEvent);
     }
+    Logger::GetInstance().Log("DX12CommandQueue destroyed\n");
 }
 
-void CommandQueue::Initialize(ID3D12Device* device)
+void DX12CommandQueue::Initialize(ID3D12Device* device)
 {
-    Logger::GetInstance().Log("Initializing CommandQueue...\n");
+    Logger::GetInstance().Log("Initializing DX12CommandQueue...\n");
     
     // Create command queue
     D3D12_COMMAND_QUEUE_DESC queueDesc = {};
@@ -31,7 +33,7 @@ void CommandQueue::Initialize(ID3D12Device* device)
         Logger::GetInstance().Log("Failed to create command queue: 0x%X\n", hr);
         return;
     }
-    Logger::GetInstance().Log("Command queue created\n");
+    Logger::GetInstance().Log("DX12CommandQueue created\n");
 
     // Create fence
     hr = device->CreateFence(0, D3D12_FENCE_FLAG_NONE, IID_PPV_ARGS(&fence));
@@ -51,17 +53,10 @@ void CommandQueue::Initialize(ID3D12Device* device)
     }
     Logger::GetInstance().Log("Fence event created\n");
 
-    Logger::GetInstance().Log("CommandQueue initialized successfully\n");
+    Logger::GetInstance().Log("DX12CommandQueue initialized successfully\n");
 }
 
-void CommandQueue::Execute(const ComPtr<ID3D12CommandList>& commandList)
-{
-    ID3D12CommandList* commandLists[] = { commandList.Get() };
-    commandQueue->ExecuteCommandLists(_countof(commandLists), commandLists);
-    Flush();
-}
-
-void CommandQueue::Execute(DX12CommandList* commandList)
+void DX12CommandQueue::Execute(DX12CommandList* commandList)
 {
     // DX12CommandList version
     ID3D12CommandList* lists[] = { commandList->GetCommandList() };
@@ -69,13 +64,13 @@ void CommandQueue::Execute(DX12CommandList* commandList)
     Flush(); // Ensure GPU is done before we reset the allocator
 }
 
-void CommandQueue::Flush()
+void DX12CommandQueue::Flush()
 {
     Signal();
     WaitForGpu();
 }
 
-void CommandQueue::Signal()
+void DX12CommandQueue::Signal()
 {
     HRESULT hr = commandQueue->Signal(fence.Get(), fenceValue);
     if (FAILED(hr))
@@ -84,7 +79,7 @@ void CommandQueue::Signal()
     }
 }
 
-void CommandQueue::WaitForGpu()
+void DX12CommandQueue::WaitForGpu()
 {
     if (fence->GetCompletedValue() < fenceValue)
     {

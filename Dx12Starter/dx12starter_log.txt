@@ -1,401 +1,181 @@
-21:18:37 - Engine::Initialize()
-21:18:37 - Creating DXGI factory...
-21:18:37 - DXGI factory created successfully
-21:18:37 - Enumerating adapters...
-21:18:37 -   NVIDIA GeForce RTX 4070 (Dedicated VRAM: 12025 MB)
-21:18:37 -     Attached Output: \\.\DISPLAY2
-21:18:37 -     Attached Output: \\.\DISPLAY1
-21:18:37 -     Attached Output: \\.\DISPLAY3
-21:18:37 -   Microsoft Basic Render Driver (Dedicated VRAM: 0 MB)
-21:18:37 - Selected adapter 0 as main GPU
-21:18:37 - Creating DirectX device...
-21:18:37 - Enabling DirectX debug layer...
-21:18:37 - DirectX debug layer enabled
-21:18:37 - DirectX device created successfully
-21:18:37 - Checking hardware capabilities...
-21:18:37 - GPU supports ALLOW_TEARING feature
-21:18:37 - Creating CommandQueue object...
-21:18:37 - Initializing CommandQueue...
-21:18:37 - Command queue created
-21:18:37 - Fence created
-21:18:37 - Fence event created
-21:18:37 - CommandQueue initialized successfully
-21:18:37 - Creating command list...
-21:18:37 - DX12CommandList created successfully
-21:18:37 - Command list created successfully
-21:18:37 - Creating swap chain...
-21:18:37 - Swap chain created successfully
-21:18:37 - Creating RTV descriptor heap...
-21:18:37 - DX12DescriptorHeap created successfully (Type: 2, Size: 1000)
-21:18:37 - Creating render target views...
-21:18:37 - DX12RenderTarget created successfully
-21:18:37 - DX12RenderTarget created successfully
-21:18:37 - Render target views created successfully
-21:18:37 - Loading shaders...
-21:18:37 - Loading shader: bypass_vs.cso
-21:18:37 - Shader size: 492 bytes
-21:18:37 - Shader buffer: 000001B2DD525120
-21:18:37 - Shader loaded successfully: bypass_vs.cso (Size: 492 bytes)
-21:18:37 - Loading shader: bypass_ps.cso
-21:18:37 - Shader size: 452 bytes
-21:18:37 - Shader buffer: 000001B2E635D890
-21:18:37 - Shader loaded successfully: bypass_ps.cso (Size: 452 bytes)
-21:18:37 - Shaders loaded successfully
-21:18:37 - Creating pipeline state...
-21:18:37 - Creating DX12PipelineState...
-21:18:37 - Creating root signature...
-21:18:37 - Root signature created successfully
-21:18:37 - Creating pipeline state...
-21:18:37 - Pipeline state created successfully
-21:18:37 - DX12PipelineState created successfully
-21:18:37 - Pipeline state created successfully
-21:18:37 - Testing memory allocation...
-21:18:38 - Committed resource created successfully (Size: 1073741824 bytes)
-21:18:38 - Successfully allocated 1GB test buffer
-21:18:38 - GPU Virtual Address: 0x2E0200000
-21:18:38 - Uploaded 1024 bytes to GPU resource
-21:18:38 - Successfully uploaded test data to GPU buffer
-21:18:38 - Disabling DXGI message queue monitoring...
-21:18:38 - DXGI message queue monitoring disabled
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:38 - Transitioning resource state from 0 to 4
-21:18:38 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:39 - Transitioning resource state from 0 to 4
-21:18:39 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:40 - Transitioning resource state from 0 to 4
-21:18:40 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:41 - Transitioning resource state from 0 to 4
-21:18:41 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:42 - Transitioning resource state from 0 to 4
-21:18:42 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:43 - Transitioning resource state from 0 to 4
-21:18:43 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:44 - Transitioning resource state from 0 to 4
-21:18:44 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:45 - Transitioning resource state from 0 to 4
-21:18:45 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:46 - Transitioning resource state from 0 to 4
-21:18:46 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:47 - Transitioning resource state from 0 to 4
-21:18:47 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:48 - Transitioning resource state from 0 to 4
-21:18:48 - Transitioning resource state from 4 to 0
-21:18:49 - Transitioning resource state from 0 to 4
-21:18:49 - Transitioning resource state from 4 to 0
-21:18:49 - Transitioning resource state from 0 to 4
-21:18:49 - Transitioning resource state from 4 to 0
-21:18:49 - Transitioning resource state from 0 to 4
-21:18:49 - Transitioning resource state from 4 to 0
-21:18:49 - Transitioning resource state from 0 to 4
-21:18:49 - Transitioning resource state from 4 to 0
-21:18:49 - Transitioning resource state from 0 to 4
-21:18:49 - Transitioning resource state from 4 to 0
+01:00:10 - Engine::Initialize()
+01:00:10 - Creating DXGI factory...
+01:00:10 - DXGI factory created successfully
+01:00:10 - Enumerating adapters...
+01:00:10 -   NVIDIA GeForce RTX 4070 (Dedicated VRAM: 12025 MB)
+01:00:10 -     Attached Output: \\.\DISPLAY2
+01:00:10 -     Attached Output: \\.\DISPLAY1
+01:00:10 -     Attached Output: \\.\DISPLAY3
+01:00:10 -   Microsoft Basic Render Driver (Dedicated VRAM: 0 MB)
+01:00:10 - Selected adapter 0 as main GPU
+01:00:10 - Creating DirectX device...
+01:00:10 - Enabling DirectX debug layer...
+01:00:10 - DirectX debug layer enabled
+01:00:11 - DirectX device created successfully
+01:00:11 - Checking hardware capabilities...
+01:00:11 - GPU supports ALLOW_TEARING feature
+01:00:11 - Creating DX12Device wrapper...
+01:00:11 - DX12Device created successfully
+01:00:11 - DX12Device wrapper created successfully
+01:00:11 - Creating CommandQueue object...
+01:00:11 - DX12CommandQueue created
+01:00:11 - Initializing DX12CommandQueue...
+01:00:11 - DX12CommandQueue created
+01:00:11 - Fence created
+01:00:11 - Fence event created
+01:00:11 - DX12CommandQueue initialized successfully
+01:00:11 - Creating command list...
+01:00:11 - DX12CommandList created successfully
+01:00:11 - Command list created successfully
+01:00:11 - Creating swap chain...
+01:00:11 - Swap chain created successfully
+01:00:11 - Creating RTV descriptor heap...
+01:00:11 - DX12DescriptorHeap created successfully (Type: 2, Size: 1000)
+01:00:11 - Creating render target views...
+01:00:11 - DX12RenderTarget created successfully
+01:00:11 - DX12RenderTarget created successfully
+01:00:11 - Render target views created successfully
+01:00:11 - Loading shaders...
+01:00:11 - Current working directory: E:\Repo\Dx12Starter\Dx12Starter
+01:00:11 - Vertex shader path: E:/Repo/Dx12Starter/bypass_vs.cso
+01:00:11 - Loading shader: E:/Repo/Dx12Starter/bypass_vs.cso
+01:00:11 - Shader size: 616 bytes
+01:00:11 - Shader buffer: 000002C9D1F51CA0
+01:00:11 - Shader loaded successfully: E:/Repo/Dx12Starter/bypass_vs.cso (Size: 616 bytes)
+01:00:11 - Pixel shader path: E:/Repo/Dx12Starter/bypass_ps.cso
+01:00:11 - Loading shader: E:/Repo/Dx12Starter/bypass_ps.cso
+01:00:11 - Shader size: 540 bytes
+01:00:11 - Shader buffer: 000002C9DACCFD20
+01:00:11 - Shader loaded successfully: E:/Repo/Dx12Starter/bypass_ps.cso (Size: 540 bytes)
+01:00:11 - Shaders loaded successfully
+01:00:11 - Creating pipeline state...
+01:00:11 - Creating DX12PipelineState...
+01:00:11 - Creating root signature...
+01:00:11 - Root signature created successfully
+01:00:11 - Creating pipeline state...
+01:00:11 - Pipeline state created successfully
+01:00:11 - DX12PipelineState created successfully
+01:00:11 - Pipeline state created successfully
+01:00:11 - DX12Viewport created (Width: 1280, Height: 720)
+01:00:11 - Viewport created successfully
+01:00:11 - Creating geometry...
+01:00:11 - Committed resource created successfully (Size: 72 bytes)
+01:00:11 - Uploaded 72 bytes to GPU resource
+01:00:11 - DX12Geometry created successfully (Vertices: 3, Size: 72 bytes)
+01:00:11 - Geometry created successfully
+01:00:11 - Testing memory allocation...
+01:00:11 - Committed resource created successfully (Size: 1073741824 bytes)
+01:00:11 - Successfully allocated 1GB test buffer
+01:00:11 - GPU Virtual Address: 0x2E0200000
+01:00:11 - Uploaded 1024 bytes to GPU resource
+01:00:11 - Successfully uploaded test data to GPU buffer
+01:00:11 - Disabling DXGI message queue monitoring...
+01:00:11 - DXGI message queue monitoring disabled
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:11 - Transitioning resource state from 0 to 4
+01:00:11 - Setting geometry and drawing...
+01:00:11 - Geometry drawn
+01:00:11 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - Transitioning resource state from 0 to 4
+01:00:12 - Setting geometry and drawing...
+01:00:12 - Geometry drawn
+01:00:12 - Transitioning resource state from 4 to 0
+01:00:12 - DX12CommandQueue destroyed
+01:00:12 - DX12Device destroyed
+01:00:12 - DX12PipelineState destroyed
+01:00:12 - DX12Viewport destroyed
+01:00:12 - DX12Resource destroyed
+01:00:12 - DX12Geometry destroyed
+01:00:12 - DX12Resource destroyed
+01:00:12 - ----- LOG ENDED -----

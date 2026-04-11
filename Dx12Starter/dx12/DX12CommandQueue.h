@@ -7,11 +7,11 @@ using Microsoft::WRL::ComPtr;
 
 class DX12CommandList;
 
-class CommandQueue
+class DX12CommandQueue
 {
 public:
-    CommandQueue();
-    ~CommandQueue();
+    DX12CommandQueue();
+    ~DX12CommandQueue();
 
     void Initialize(ID3D12Device* device);
     void Execute(const ComPtr<ID3D12CommandList>& commandList);

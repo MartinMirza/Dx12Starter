@@ -1,4 +1,6 @@
 #include "DX12CommandList.h"
+#include "DX12Geometry.h"
+#include "DX12Viewport.h"
 #include "DX12RenderTarget.h"
 #include "DX12PipelineState.h"
 #include "Logger.h"
@@ -64,6 +66,36 @@ void DX12CommandList::SetRenderTarget(DX12RenderTarget* renderTarget)
 void DX12CommandList::ClearRenderTarget(DX12RenderTarget* renderTarget, const float* color)
 {
     commandList->ClearRenderTargetView(renderTarget->descriptorHandle, color, 0, nullptr);
+}
+
+void DX12CommandList::SetViewport(DX12Viewport* viewport)
+{
+    if (viewport)
+    {
+        const D3D12_VIEWPORT& vp = viewport->GetViewport();
+        const D3D12_RECT& sr = viewport->GetScissorRect();
+        commandList->RSSetViewports(1, &vp);
+        commandList->RSSetScissorRects(1, &sr);
+    }
+}
+
+void DX12CommandList::SetGeometry(DX12Geometry* geometry)
+{
+    if (geometry)
+    {
+        // Set vertex buffer
+        D3D12_VERTEX_BUFFER_VIEW vbv = geometry->vertexBufferView;
+        commandList->IASetVertexBuffers(0, 1, &vbv);
+        
+        // Set primitive topology
+        commandList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+    }
+}
+
+void DX12CommandList::DrawGeometry()
+{
+    // Draw the geometry (3 vertices for a triangle)
+    commandList->DrawInstanced(3, 1, 0, 0);
 }
 
 void DX12CommandList::Close()

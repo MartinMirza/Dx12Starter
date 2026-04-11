@@ -12,10 +12,32 @@ void InputFile::Open(LPCSTR fileName)
 void InputFile::Read()
 {
     fileSize = GetFileSize(fileHandle, NULL);
-    fileBuffer = new char[fileSize];
-    if (!ReadFile(fileHandle, fileBuffer, fileSize, NULL, NULL))
+    if (fileSize == INVALID_FILE_SIZE)
     {
-        exit(3);
+        // File size could not be determined
+        fileSize = 0;
+        fileBuffer = nullptr;
+        return;
+    }
+    
+    fileBuffer = new char[fileSize];
+    DWORD bytesRead = 0;
+    if (!ReadFile(fileHandle, fileBuffer, fileSize, &bytesRead, NULL))
+    {
+        // Read failed
+        delete[] fileBuffer;
+        fileBuffer = nullptr;
+        fileSize = 0;
+        return;
+    }
+    
+    if (bytesRead != fileSize)
+    {
+        // Partial read
+        delete[] fileBuffer;
+        fileBuffer = nullptr;
+        fileSize = 0;
+        return;
     }
 }
 

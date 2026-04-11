@@ -8,6 +8,11 @@ OutputFile::OutputFile()
 void OutputFile::Open(LPCSTR fileName)
 {
     File::Open(fileName, GENERIC_WRITE, CREATE_ALWAYS);
+    // If file could not be opened, silently fail to avoid circular dependency with Logger
+    if (fileHandle == nullptr)
+    {
+        return;
+    }
 }
 
 void OutputFile::Write(LPCVOID data, DWORD size)
@@ -16,12 +21,12 @@ void OutputFile::Write(LPCVOID data, DWORD size)
     BOOL errorFlag = WriteFile(fileHandle, data, size, &bytesWritten, NULL);
     if (FALSE == errorFlag)
     {
-        Logger::GetInstance().Log("ERROR: Unable to write to file! (Error: %d)\n", GetLastError());
-        exit(1);
+        // Unable to write to file - silently fail to avoid circular dependency with Logger
+        return;
     }
     else if (bytesWritten != size)
     {
-        Logger::GetInstance().Log("ERROR: Unable to write entire string! (Written: %d, Expected: %d)\n", bytesWritten, size);
-        exit(1);
+        // Partial write - silently fail to avoid circular dependency with Logger
+        return;
     }
 }

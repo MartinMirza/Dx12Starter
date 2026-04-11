@@ -8,6 +8,8 @@ using Microsoft::WRL::ComPtr;
 
 class DX12RenderTarget;
 class DX12PipelineState;
+class DX12Viewport;
+class DX12Geometry;
 
 class DX12CommandList
 {
@@ -19,6 +21,9 @@ public:
     void TransitionTo(DX12Resource* resource, D3D12_RESOURCE_STATES nextState);
     void SetRenderTarget(DX12RenderTarget* renderTarget);
     void ClearRenderTarget(DX12RenderTarget* renderTarget, const float* color);
+    void SetViewport(DX12Viewport* viewport);
+    void SetGeometry(DX12Geometry* geometry);
+    void DrawGeometry();
     void Close();
     void Reset();
     void SetPipelineState(DX12PipelineState* pipelineState);

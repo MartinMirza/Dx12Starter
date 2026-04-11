@@ -1,52 +1,185 @@
-13:11:00 - ----- LOG STARTED -----
-13:11:00 - Engine::Initialize()
-13:11:00 - Creating DXGI factory...
-13:11:00 - DXGI factory created successfully
-13:11:00 - Enumerating adapters...
-13:11:00 -   NVIDIA GeForce RTX 4070 (Dedicated VRAM: 12025 MB)
-13:11:00 -     Attached Output: \\.\DISPLAY2
-13:11:00 -     Attached Output: \\.\DISPLAY1
-13:11:00 -     Attached Output: \\.\DISPLAY3
-13:11:00 -   Microsoft Basic Render Driver (Dedicated VRAM: 0 MB)
-13:11:00 - Selected adapter 0 as main GPU
-13:11:00 - Creating DirectX device...
-13:11:00 - Enabling DirectX debug layer...
-13:11:00 - DirectX debug layer enabled
-13:11:00 - DirectX device created successfully
-13:11:00 - Checking hardware capabilities...
-13:11:00 - GPU supports ALLOW_TEARING feature
-13:11:00 - Creating CommandQueue object...
-13:11:00 - Initializing CommandQueue...
-13:11:00 - Command queue created
-13:11:00 - Fence created
-13:11:00 - Fence event created
-13:11:00 - CommandQueue initialized successfully
-13:11:00 - Creating command list...
-13:11:00 - DX12CommandList created successfully
-13:11:00 - Command list created successfully
-13:11:00 - Creating swap chain...
-13:11:00 - Swap chain created successfully
-13:11:00 - Creating RTV descriptor heap...
-13:11:00 - DX12DescriptorHeap created successfully (Type: 2, Size: 1000)
-13:11:00 - Creating render target views...
-13:11:00 - DX12RenderTarget created successfully
-13:11:00 - DX12RenderTarget created successfully
-13:11:00 - Render target views created successfully
-13:11:00 - Loading shaders...
-13:11:00 - Loading shader: bypass_vs.cso
-13:11:00 - Shader loaded successfully: bypass_vs.cso
-13:11:00 - Loading shader: bypass_ps.cso
-13:11:00 - Shader loaded successfully: bypass_ps.cso
-13:11:00 - Shaders loaded successfully
-13:11:00 - Creating pipeline state...
-13:11:00 - Creating DX12PipelineState...
-13:11:00 - Creating root signature...
-13:11:00 - Root signature created successfully
-13:11:00 - Creating pipeline state...
-13:11:00 - Pipeline state created successfully
-13:11:00 - DX12PipelineState created successfully
-13:11:00 - Pipeline state created successfully
-13:11:00 - Disabling DXGI message queue monitoring...
-13:11:00 - DXGI message queue monitoring disabled
-13:11:14 - DX12PipelineState destroyed
-13:11:14 - ----- LOG ENDED -----
+00:32:33 - Engine::Initialize()
+00:32:33 - Creating DXGI factory...
+00:32:33 - DXGI factory created successfully
+00:32:33 - Enumerating adapters...
+00:32:33 -   NVIDIA GeForce RTX 4070 (Dedicated VRAM: 12025 MB)
+00:32:33 -     Attached Output: \\.\DISPLAY2
+00:32:33 -     Attached Output: \\.\DISPLAY1
+00:32:33 -     Attached Output: \\.\DISPLAY3
+00:32:33 -   Microsoft Basic Render Driver (Dedicated VRAM: 0 MB)
+00:32:33 - Selected adapter 0 as main GPU
+00:32:33 - Creating DirectX device...
+00:32:33 - Enabling DirectX debug layer...
+00:32:33 - DirectX debug layer enabled
+00:32:33 - DirectX device created successfully
+00:32:33 - Checking hardware capabilities...
+00:32:33 - GPU supports ALLOW_TEARING feature
+00:32:33 - Creating DX12Device wrapper...
+00:32:33 - DX12Device created successfully
+00:32:33 - DX12Device wrapper created successfully
+00:32:33 - Creating CommandQueue object...
+00:32:33 - DX12CommandQueue created
+00:32:33 - Initializing DX12CommandQueue...
+00:32:33 - DX12CommandQueue created
+00:32:33 - Fence created
+00:32:33 - Fence event created
+00:32:33 - DX12CommandQueue initialized successfully
+00:32:33 - Creating command list...
+00:32:33 - DX12CommandList created successfully
+00:32:33 - Command list created successfully
+00:32:33 - Creating swap chain...
+00:32:33 - Swap chain created successfully
+00:32:33 - Creating RTV descriptor heap...
+00:32:33 - DX12DescriptorHeap created successfully (Type: 2, Size: 1000)
+00:32:33 - Creating render target views...
+00:32:33 - DX12RenderTarget created successfully
+00:32:33 - DX12RenderTarget created successfully
+00:32:33 - Render target views created successfully
+00:32:33 - Loading shaders...
+00:32:33 - Current working directory: E:\Repo\Dx12Starter
+00:32:33 - Vertex shader path: E:/Repo/Dx12Starter/bypass_vs.cso
+00:32:33 - Loading shader: E:/Repo/Dx12Starter/bypass_vs.cso
+00:32:33 - Shader size: 616 bytes
+00:32:33 - Shader buffer: 000001BF1BC0AA50
+00:32:33 - Shader loaded successfully: E:/Repo/Dx12Starter/bypass_vs.cso (Size: 616 bytes)
+00:32:33 - Pixel shader path: E:/Repo/Dx12Starter/bypass_ps.cso
+00:32:33 - Loading shader: E:/Repo/Dx12Starter/bypass_ps.cso
+00:32:33 - Shader size: 540 bytes
+00:32:33 - Shader buffer: 000001BF24BA1D90
+00:32:33 - Shader loaded successfully: E:/Repo/Dx12Starter/bypass_ps.cso (Size: 540 bytes)
+00:32:33 - Shaders loaded successfully
+00:32:33 - Creating pipeline state...
+00:32:33 - Creating DX12PipelineState...
+00:32:33 - Creating root signature...
+00:32:33 - Root signature created successfully
+00:32:33 - Creating pipeline state...
+00:32:33 - Pipeline state created successfully
+00:32:33 - DX12PipelineState created successfully
+00:32:33 - Pipeline state created successfully
+00:32:33 - DX12Viewport created (Width: 1280, Height: 720)
+00:32:33 - Viewport created successfully
+00:32:33 - Creating geometry...
+00:32:33 - Committed resource created successfully (Size: 72 bytes)
+00:32:33 - Uploaded 72 bytes to GPU resource
+00:32:33 - DX12Geometry created successfully (Vertices: 3, Size: 72 bytes)
+00:32:33 - Geometry created successfully
+00:32:33 - Testing memory allocation...
+00:32:33 - Committed resource created successfully (Size: 1073741824 bytes)
+00:32:33 - Successfully allocated 1GB test buffer
+00:32:33 - GPU Virtual Address: 0x2E0200000
+00:32:33 - Uploaded 1024 bytes to GPU resource
+00:32:33 - Successfully uploaded test data to GPU buffer
+00:32:33 - Disabling DXGI message queue monitoring...
+00:32:33 - DXGI message queue monitoring disabled
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:33 - Transitioning resource state from 0 to 4
+00:32:33 - Setting geometry and drawing...
+00:32:33 - Geometry drawn
+00:32:33 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:34 - Transitioning resource state from 0 to 4
+00:32:34 - Setting geometry and drawing...
+00:32:34 - Geometry drawn
+00:32:34 - Transitioning resource state from 4 to 0
+00:32:35 - Transitioning resource state from 0 to 4
+00:32:35 - Setting geometry and drawing...
+00:32:35 - Geometry drawn
+00:32:35 - Transitioning resource state from 4 to 0
+00:32:35 - Transitioning resource state from 0 to 4
+00:32:35 - Setting geometry and drawing...
+00:32:35 - Geometry drawn
+00:32:35 - Transitioning resource state from 4 to 0
+00:32:35 - DX12CommandQueue destroyed
+00:32:35 - DX12Device destroyed
+00:32:35 - DX12PipelineState destroyed
+00:32:35 - DX12Viewport destroyed
+00:32:35 - DX12Resource destroyed
+00:32:35 - DX12Geometry destroyed
+00:32:35 - DX12Resource destroyed
+00:32:35 - ----- LOG ENDED -----
