@@ -3,6 +3,7 @@
 #include <d3d12.h>
 #include <wrl.h>
 
+class DX12Resource;
 using Microsoft::WRL::ComPtr;
 
 class DX12RenderTarget;
@@ -15,7 +16,7 @@ public:
     DX12CommandList(ID3D12Device* device);
     ~DX12CommandList();
     
-    void TransitionTo(DX12RenderTarget* renderTarget, D3D12_RESOURCE_STATES nextState);
+    void TransitionTo(DX12Resource* resource, D3D12_RESOURCE_STATES nextState);
     void SetRenderTarget(DX12RenderTarget* renderTarget);
     void ClearRenderTarget(DX12RenderTarget* renderTarget, const float* color);
     void Close();

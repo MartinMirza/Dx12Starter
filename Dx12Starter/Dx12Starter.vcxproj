@@ -102,6 +102,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,11 +131,12 @@
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="WindowApplication.cpp" />
     <ClCompile Include="CommandQueue.cpp" />
-    <ClCompile Include="DX12CommandList.cpp" />
-    <ClCompile Include="DX12DescriptorHeap.cpp" />
-    <ClCompile Include="DX12RenderTarget.cpp" />
-    <ClCompile Include="DX12Shader.cpp" />
-    <ClCompile Include="DX12PipelineState.cpp" />
+    <ClCompile Include="dx12\DX12CommandList.cpp" />
+    <ClCompile Include="dx12\DX12DescriptorHeap.cpp" />
+    <ClCompile Include="dx12\DX12RenderTarget.cpp" />
+    <ClCompile Include="dx12\DX12Resource.cpp" />
+    <ClCompile Include="dx12\DX12Shader.cpp" />
+    <ClCompile Include="dx12\DX12PipelineState.cpp" />
     <ClCompile Include="File.cpp" />
     <ClCompile Include="InputFile.cpp" />
   </ItemGroup>
@@ -147,11 +149,12 @@
     <ClInclude Include="CommandQueue.h" />
     <ClInclude Include="HardwareCapabilities.h" />
     <ClInclude Include="RendererSettings.h" />
-    <ClInclude Include="DX12CommandList.h" />
-    <ClInclude Include="DX12DescriptorHeap.h" />
-    <ClInclude Include="DX12RenderTarget.h" />
-    <ClInclude Include="DX12Shader.h" />
-    <ClInclude Include="DX12PipelineState.h" />
+    <ClInclude Include="dx12\DX12CommandList.h" />
+    <ClInclude Include="dx12\DX12DescriptorHeap.h" />
+    <ClInclude Include="dx12\DX12RenderTarget.h" />
+    <ClInclude Include="dx12\DX12Resource.h" />
+    <ClInclude Include="dx12\DX12Shader.h" />
+    <ClInclude Include="dx12\DX12PipelineState.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="InputFile.h" />
     <Hlsl Include="bypass_vs.hlsl" />

@@ -1,6 +1,6 @@
 #include "CommandQueue.h"
 #include "Logger.h"
-#include "DX12CommandList.h"
+#include "dx12\DX12CommandList.h"
 
 CommandQueue::CommandQueue() : fenceEvent(nullptr), fenceValue(0)
 {

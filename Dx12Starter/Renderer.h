@@ -6,10 +6,11 @@
 
 using Microsoft::WRL::ComPtr;
 
-#include "DX12DescriptorHeap.h"
-#include "DX12RenderTarget.h"
-#include "DX12Shader.h"
-#include "DX12PipelineState.h"
+#include "dx12\DX12DescriptorHeap.h"
+#include "dx12\DX12RenderTarget.h"
+#include "dx12\DX12Resource.h"
+#include "dx12\DX12Shader.h"
+#include "dx12\DX12PipelineState.h"
 #include "HardwareCapabilities.h"
 #include "RendererSettings.h"
 
@@ -47,6 +48,7 @@ private:
     bool IsVsyncDisabledAndTearingAllowed();
     void LoadShaders();
     void CreatePipelineState();
+    void TestMemoryAllocation();
 
     ComPtr<IDXGIFactory5> dxgiFactory;
     ComPtr<IDXGIAdapter1> dxgiAdapter;
@@ -56,10 +58,10 @@ private:
     ComPtr<IDXGISwapChain3> dxgiSwapChain;
     DX12DescriptorHeap* rtvDescriptorHeap = nullptr;
     DX12RenderTarget* renderTargets[FRAME_COUNT] = { nullptr };
-    ComPtr<ID3D12Resource> resources[FRAME_COUNT];
     DX12Shader* vertexShader = nullptr;
     DX12Shader* pixelShader = nullptr;
     DX12PipelineState* pipelineState = nullptr;
+    DX12Resource* testBuffer = nullptr; // For memory allocation testing
     HWND hwnd;
     HardwareCapabilities hardwareCapabilities;
     RendererSettings settings;

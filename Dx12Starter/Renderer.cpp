@@ -1,6 +1,6 @@
 #include "Renderer.h"
 #include "CommandQueue.h"
-#include "DX12CommandList.h"
+#include "dx12\DX12CommandList.h"
 #include "HardwareCapabilities.h"
 #include "Logger.h"
 #include "RendererSettings.h"
@@ -23,6 +23,7 @@ Renderer::Renderer(HWND hwnd, const RendererSettings& settings) : commandQueue(n
     CreateRenderTargetViews();
     LoadShaders();
     CreatePipelineState();
+    TestMemoryAllocation();
     DisableDxgiMsgQueueMonitoring();
 }
 
@@ -41,6 +42,7 @@ Renderer::~Renderer()
     }
     
     delete commandList;
+    delete testBuffer; // Clean up test buffer
 }
 
 void Renderer::CreateDxgiFactory()
@@ -226,17 +228,31 @@ void Renderer::CreateRenderTargetViews()
 {
     Logger::GetInstance().Log("Creating render target views...\n");
     
+    D3D12_HEAP_PROPERTIES heapProperties = {};
+    heapProperties.Type = D3D12_HEAP_TYPE_DEFAULT;
+    heapProperties.CPUPageProperty = D3D12_CPU_PAGE_PROPERTY_UNKNOWN;
+    heapProperties.MemoryPoolPreference = D3D12_MEMORY_POOL_UNKNOWN;
+    heapProperties.CreationNodeMask = 1;
+    heapProperties.VisibleNodeMask = 1;
+    
     for (UINT i = 0; i < FRAME_COUNT; i++)
     {
-        HRESULT hr = dxgiSwapChain->GetBuffer(i, IID_PPV_ARGS(&resources[i]));
+        ComPtr<ID3D12Resource> backBuffer;
+        HRESULT hr = dxgiSwapChain->GetBuffer(i, IID_PPV_ARGS(&backBuffer));
         if (FAILED(hr))
         {
             Logger::GetInstance().Log("Failed to get back buffer %d: 0x%X\n", i, hr);
             continue;
         }
         
+        // Create DX12Resource wrapper for the back buffer
+        DX12Resource* resource = new DX12Resource();
+        
+        // Store the back buffer in the resource
+        resource->SetResource(backBuffer.Detach());
+        
         D3D12_CPU_DESCRIPTOR_HANDLE descriptorHandle = rtvDescriptorHeap->AllocateDescriptor();
-        renderTargets[i] = new DX12RenderTarget(device.Get(), resources[i].Get(), descriptorHandle, D3D12_RESOURCE_STATE_COMMON);
+        renderTargets[i] = new DX12RenderTarget(device.Get(), resource, descriptorHandle, D3D12_RESOURCE_STATE_COMMON);
     }
     
     Logger::GetInstance().Log("Render target views created successfully\n");
@@ -326,10 +342,10 @@ void Renderer::RecordCommandList()
         commandList->SetPipelineState(pipelineState);
     }
     
-    commandList->TransitionTo(renderTargets[currentFrameIndex], D3D12_RESOURCE_STATE_RENDER_TARGET);
+    commandList->TransitionTo(renderTargets[currentFrameIndex]->GetDX12Resource(), D3D12_RESOURCE_STATE_RENDER_TARGET);
     commandList->SetRenderTarget(renderTargets[currentFrameIndex]);
     commandList->ClearRenderTarget(renderTargets[currentFrameIndex], currentFrameIndex ? clearColorOne : clearColorTwo);
-    commandList->TransitionTo(renderTargets[currentFrameIndex], D3D12_RESOURCE_STATE_PRESENT);
+    commandList->TransitionTo(renderTargets[currentFrameIndex]->GetDX12Resource(), D3D12_RESOURCE_STATE_PRESENT);
 }
 
 void Renderer::CloseCommandList()
@@ -401,4 +417,38 @@ void Renderer::PresentFrame()
 
     // Update current frame index
     currentFrameIndex = dxgiSwapChain->GetCurrentBackBufferIndex();
+}
+
+void Renderer::TestMemoryAllocation()
+{
+    Logger::GetInstance().Log("Testing memory allocation...\n");
+    
+    // Allocate 1GB buffer as suggested in the tutorial
+    // This will be visible in Task Manager under GPU memory usage
+    testBuffer = new DX12Resource(device.Get(), 1024 * 1024 * 1024);
+    
+    if (testBuffer)
+    {
+        Logger::GetInstance().Log("Successfully allocated 1GB test buffer\n");
+        Logger::GetInstance().Log("GPU Virtual Address: 0x%llX\n", testBuffer->GetGpuVirtualAddress());
+        
+        // Test upload functionality with some dummy data
+        const size_t testDataSize = 1024; // 1KB of test data
+        void* testData = malloc(testDataSize);
+        if (testData)
+        {
+            memset(testData, 0xAA, testDataSize); // Fill with test pattern
+            testBuffer->Upload(testData, testDataSize);
+            free(testData);
+            Logger::GetInstance().Log("Successfully uploaded test data to GPU buffer\n");
+        }
+        else
+        {
+            Logger::GetInstance().Log("ERROR: Failed to allocate test data\n");
+        }
+    }
+    else
+    {
+        Logger::GetInstance().Log("ERROR: Failed to allocate test buffer\n");
+    }
 }
