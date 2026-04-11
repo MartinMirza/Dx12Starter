@@ -4,10 +4,6 @@ InputFile::InputFile() : fileSize(0), fileBuffer(nullptr)
 {
 }
 
-InputFile::~InputFile()
-{
-}
-
 void InputFile::Open(LPCSTR fileName)
 {
     File::Open(fileName, GENERIC_READ, OPEN_EXISTING);

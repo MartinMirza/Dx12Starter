@@ -7,8 +7,7 @@ class OutputFile : public File
 {
 public:
     OutputFile();
-    ~OutputFile();
+    virtual ~OutputFile() = default;
     virtual void Open(LPCSTR fileName) override;
-    void Close();
     void Write(LPCVOID data, DWORD size);
 };

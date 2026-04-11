@@ -19,7 +19,7 @@ Renderer::Renderer(HWND hwnd, const RendererSettings& settings) : commandQueue(n
     CreateCommandQueue();
     CreateCommandList();
     CreateSwapChain();
-    CreateRtvDescriptorHeap();
+    CreateRTVDescriptorHeap();
     CreateRenderTargetViews();
     LoadShaders();
     DisableDxgiMsgQueueMonitoring();
@@ -30,6 +30,9 @@ Renderer::~Renderer()
     delete commandQueue;
     delete vertexShader;
     delete pixelShader;
+    delete rtvDescriptorHeap;
+    delete[] renderTargets;
+    delete commandList;
 }
 
 void Renderer::CreateDxgiFactory()
@@ -205,7 +208,7 @@ void Renderer::CreateSwapChain()
     Logger::GetInstance().Log("Swap chain created successfully\n");
 }
 
-void Renderer::CreateRtvDescriptorHeap()
+void Renderer::CreateRTVDescriptorHeap()
 {
     Logger::GetInstance().Log("Creating RTV descriptor heap...\n");
     rtvDescriptorHeap = new DX12DescriptorHeap(device.Get(), D3D12_DESCRIPTOR_HEAP_TYPE_RTV);

@@ -22,7 +22,7 @@ DX12Shader::DX12Shader(LPCSTR fileName) : bytecode({ nullptr, 0 })
 DX12Shader::~DX12Shader()
 {
     // This class is responsible for freeing the buffer
-    delete[] bytecode.pShaderBytecode;
+    delete (char*)bytecode.pShaderBytecode;
 }
 
 D3D12_SHADER_BYTECODE DX12Shader::GetBytecode()

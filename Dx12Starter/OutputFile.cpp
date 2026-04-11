@@ -4,18 +4,9 @@ OutputFile::OutputFile()
 {
 }
 
-OutputFile::~OutputFile()
-{
-}
-
 void OutputFile::Open(LPCSTR fileName)
 {
     File::Open(fileName, GENERIC_WRITE, CREATE_ALWAYS);
-}
-
-void OutputFile::Close()
-{
-    File::Close();
 }
 
 void OutputFile::Write(LPCVOID data, DWORD size)

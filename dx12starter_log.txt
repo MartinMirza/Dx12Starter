@@ -1,43 +1,43 @@
-01:00:23 - ----- LOG STARTED -----
-01:00:23 - Engine::Initialize()
-01:00:23 - Creating DXGI factory...
-01:00:23 - DXGI factory created successfully
-01:00:23 - Enumerating adapters...
-01:00:23 -   NVIDIA GeForce RTX 4070 (Dedicated VRAM: 12025 MB)
-01:00:23 -     Attached Output: \\.\DISPLAY2
-01:00:23 -     Attached Output: \\.\DISPLAY1
-01:00:23 -     Attached Output: \\.\DISPLAY3
-01:00:23 -   Microsoft Basic Render Driver (Dedicated VRAM: 0 MB)
-01:00:23 - Selected adapter 0 as main GPU
-01:00:23 - Creating DirectX device...
-01:00:23 - Enabling DirectX debug layer...
-01:00:23 - DirectX debug layer enabled
-01:00:24 - DirectX device created successfully
-01:00:24 - Checking hardware capabilities...
-01:00:24 - GPU supports ALLOW_TEARING feature
-01:00:24 - Creating CommandQueue object...
-01:00:24 - Initializing CommandQueue...
-01:00:24 - Command queue created
-01:00:24 - Fence created
-01:00:24 - Fence event created
-01:00:24 - CommandQueue initialized successfully
-01:00:24 - Creating command list...
-01:00:24 - DX12CommandList created successfully
-01:00:24 - Command list created successfully
-01:00:24 - Creating swap chain...
-01:00:24 - Swap chain created successfully
-01:00:24 - Creating RTV descriptor heap...
-01:00:24 - DX12DescriptorHeap created successfully (Type: 2, Size: 1000)
-01:00:24 - Creating render target views...
-01:00:24 - DX12RenderTarget created successfully
-01:00:24 - DX12RenderTarget created successfully
-01:00:24 - Render target views created successfully
-01:00:24 - Loading shaders...
-01:00:24 - Loading shader: bypass_vs.cso
-01:00:24 - Shader loaded successfully: bypass_vs.cso
-01:00:24 - Loading shader: bypass_ps.cso
-01:00:24 - Shader loaded successfully: bypass_ps.cso
-01:00:24 - Shaders loaded successfully
-01:00:24 - Disabling DXGI message queue monitoring...
-01:00:24 - DXGI message queue monitoring disabled
-01:01:28 - ----- LOG ENDED -----
+01:13:12 - ----- LOG STARTED -----
+01:13:12 - Engine::Initialize()
+01:13:12 - Creating DXGI factory...
+01:13:12 - DXGI factory created successfully
+01:13:12 - Enumerating adapters...
+01:13:12 -   NVIDIA GeForce RTX 4070 (Dedicated VRAM: 12025 MB)
+01:13:12 -     Attached Output: \\.\DISPLAY2
+01:13:12 -     Attached Output: \\.\DISPLAY1
+01:13:12 -     Attached Output: \\.\DISPLAY3
+01:13:12 -   Microsoft Basic Render Driver (Dedicated VRAM: 0 MB)
+01:13:12 - Selected adapter 0 as main GPU
+01:13:12 - Creating DirectX device...
+01:13:12 - Enabling DirectX debug layer...
+01:13:12 - DirectX debug layer enabled
+01:13:12 - DirectX device created successfully
+01:13:12 - Checking hardware capabilities...
+01:13:12 - GPU supports ALLOW_TEARING feature
+01:13:12 - Creating CommandQueue object...
+01:13:12 - Initializing CommandQueue...
+01:13:12 - Command queue created
+01:13:12 - Fence created
+01:13:12 - Fence event created
+01:13:12 - CommandQueue initialized successfully
+01:13:12 - Creating command list...
+01:13:12 - DX12CommandList created successfully
+01:13:12 - Command list created successfully
+01:13:12 - Creating swap chain...
+01:13:12 - Swap chain created successfully
+01:13:12 - Creating RTV descriptor heap...
+01:13:12 - DX12DescriptorHeap created successfully (Type: 2, Size: 1000)
+01:13:12 - Creating render target views...
+01:13:12 - DX12RenderTarget created successfully
+01:13:12 - DX12RenderTarget created successfully
+01:13:12 - Render target views created successfully
+01:13:12 - Loading shaders...
+01:13:12 - Loading shader: bypass_vs.cso
+01:13:12 - Shader loaded successfully: bypass_vs.cso
+01:13:12 - Loading shader: bypass_ps.cso
+01:13:12 - Shader loaded successfully: bypass_ps.cso
+01:13:12 - Shaders loaded successfully
+01:13:12 - Disabling DXGI message queue monitoring...
+01:13:12 - DXGI message queue monitoring disabled
+01:15:00 - ----- LOG ENDED -----

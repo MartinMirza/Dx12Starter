@@ -39,7 +39,7 @@ private:
     void CreateCommandQueue();
     void CreateCommandList();
     void CreateSwapChain();
-    void CreateRtvDescriptorHeap();
+    void CreateRTVDescriptorHeap();
     void CreateRenderTargetViews();
     void DisableDxgiMsgQueueMonitoring();
     void GetCapabilities();
