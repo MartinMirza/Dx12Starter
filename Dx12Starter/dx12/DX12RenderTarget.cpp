@@ -11,7 +11,6 @@ DX12RenderTarget::DX12RenderTarget(ID3D12Device* device, DX12Resource* resource,
 DX12RenderTarget::~DX12RenderTarget()
 {
     // Resource is managed by DX12Resource class
-    delete resource;
 }
 
 ID3D12Resource* DX12RenderTarget::GetResource() const
